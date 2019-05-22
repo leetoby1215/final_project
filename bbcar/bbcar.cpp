@@ -21,19 +21,19 @@ void BBCar::goStraight( int speed ){
     servo1.set_speed(-speed);
 }
 
-void BBCar::turn( int speed, double turn ){
+void BBCar::turn( int speed, double direction ){
     static int last_speed = 0;
     if(last_speed!=speed){
         servo0.set_speed(speed);
         servo1.set_speed(-speed);
     }
-    if(turn>0){
-        servo0.set_factor(turn);
+    if(direction>0){
+        servo0.set_factor(direction);
         servo1.set_factor(1);
     }
-    if(turn<0){
+    if(direction<0){
         servo0.set_factor(1);
-        servo1.set_factor(-turn);
+        servo1.set_factor(-direction);
     }
 }
 
@@ -49,8 +49,8 @@ void BBCar::controller( float err ){
     float correction = err*global_kp + erri*global_ki;
     correction = clamp(correction, bound, -bound);
     printf("correction(%.2f,%.2f) = %3.2f (kp = %.2f, ki = %.2f)\r\n", err, erri, correction, global_kp, global_ki);
-    float turn = ((correction>0) ?1:(-1)) - correction;
-    servoTurn(turn2speed(turn),turn);
+    float val = ((correction>0) ?1:(-1)) - correction;
+    turn(turn2speed(val),val);
 }
 
 

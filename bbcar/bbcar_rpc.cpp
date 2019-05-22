@@ -1,7 +1,7 @@
 #include "bbcar_rpc.h"
 RPCFunction rpcAngle(&RPC_angle, "angle");
 RPCFunction rpcStop(&RPC_stop, "stop");
-RPCFunction rpcCtrl(&RPC_goStraght, "goStraght");
+RPCFunction rpcCtrl(&RPC_goStraight, "goStraght");
 RPCFunction rpcTurn(&RPC_turn, "turn");
 RPCFunction rpcSetController(&RPC_setController, "setController");
 
@@ -15,20 +15,20 @@ void RPC_angle (Arguments *in, Reply *out)   {
 }
 
 void RPC_stop (Arguments *in, Reply *out)   {
-    car.servoStop();
+    car.stop();
     return;
 }
 
 void RPC_goStraight (Arguments *in, Reply *out)   {
     int speed = in->getArg<double>();
-    car.servoCtrl(speed);
+    car.goStraight(speed);
     return;
 }
 
 void RPC_turn (Arguments *in, Reply *out)   {
     int speed = in->getArg<double>();
     double turn = in->getArg<double>();
-    car.servoTurn(speed,turn);
+    car.turn(speed,turn);
     return;
 }
 
