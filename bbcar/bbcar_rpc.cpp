@@ -15,8 +15,7 @@ void RPC_ServoAngle (Arguments *in, Reply *out)   {
 }
 
 void RPC_ServoStop (Arguments *in, Reply *out)   {
-    int speed = in->getArg<double>();
-    car.servoStop(speed);
+    car.servoStop();
     return;
 }
 
@@ -27,7 +26,6 @@ void RPC_ServoCtrl (Arguments *in, Reply *out)   {
 }
 
 void RPC_ServoTurn (Arguments *in, Reply *out)   {
-    static int last_speed = 0;
     int speed = in->getArg<double>();
     double turn = in->getArg<double>();
     car.servoTurn(speed,turn);
