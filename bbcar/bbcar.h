@@ -12,9 +12,9 @@ class BBCar{
 		parallax_servo servo0;
 		parallax_servo servo1;
 
-		void servoStop();
-		void servoCtrl( int speed );
-		void servoTurn( int speed, double turn );
+		void stop();
+		void goStraight( int speed );
+		void turn( int speed, double turn );
 		void controller( float err );
 		void setController( float kp, float ki );
 };

@@ -9,19 +9,19 @@ BBCar::BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1, Ticker &servo_ticker ):ser
     servo0 = 0; servo1 = 0;
 }
 
-void BBCar::servoStop(){
+void BBCar::stop(){
     servo0.set_speed(0);
     servo1.set_speed(0);
     servo0.set_factor(1);
     servo1.set_factor(1);
 }
 
-void BBCar::servoCtrl( int speed ){
+void BBCar::goStraight( int speed ){
     servo0.set_speed(speed);
     servo1.set_speed(-speed);
 }
 
-void BBCar::servoTurn( int speed, double turn ){
+void BBCar::turn( int speed, double turn ){
     static int last_speed = 0;
     if(last_speed!=speed){
         servo0.set_speed(speed);

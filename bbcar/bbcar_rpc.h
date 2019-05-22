@@ -4,10 +4,10 @@
 #include "bbcar.h"
 #include "mbed_rpc.h"
 
-void RPC_ServoStop(Arguments *in, Reply *out);
-void RPC_ServoCtrl(Arguments *in, Reply *out);
-void RPC_ServoTurn(Arguments *in, Reply *out);
-void RPC_ServoAngle(Arguments *in, Reply *out);
-void RPC_SetController (Arguments *in, Reply *out);
+void RPC_stop(Arguments *in, Reply *out);
+void RPC_goStraight(Arguments *in, Reply *out);
+void RPC_turn(Arguments *in, Reply *out);
+void RPC_angle(Arguments *in, Reply *out);
+void RPC_setController (Arguments *in, Reply *out);
 
 #endif
