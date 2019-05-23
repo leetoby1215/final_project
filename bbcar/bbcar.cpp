@@ -38,8 +38,8 @@ void BBCar::turn( int speed, double direction ){
 }
 
 float global_kp, global_ki;
-inline float clamp( float value, float max, float min ){ return (max<value)?max:((min>value)?min:value); }
-inline int turn2speed( float turn ){ return 25+abs(25*turn); }
+float BBCar::clamp( float value, float max, float min ){ return (max<value)?max:((min>value)?min:value); }
+int BBCar::turn2speed( float turn ){ return 25+abs(25*turn); }
 void BBCar::setController( float kp, float ki ){ global_kp = kp; global_ki = ki;}
 
 void BBCar::controller( float err ){

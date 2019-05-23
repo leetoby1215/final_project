@@ -17,6 +17,10 @@ class BBCar{
 		void turn( int speed, double turn );
 		void controller( float err );
 		void setController( float kp, float ki );
+
+		//Range limit the output
+		float clamp( float value, float max, float min );
+		int turn2speed( float turn );
 };
 
 #endif

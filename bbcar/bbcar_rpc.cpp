@@ -1,7 +1,7 @@
 #include "bbcar_rpc.h"
 RPCFunction rpcAngle(&RPC_angle, "angle");
 RPCFunction rpcStop(&RPC_stop, "stop");
-RPCFunction rpcCtrl(&RPC_goStraight, "goStraght");
+RPCFunction rpcCtrl(&RPC_goStraight, "goStraight");
 RPCFunction rpcTurn(&RPC_turn, "turn");
 RPCFunction rpcSetController(&RPC_setController, "setController");
 
