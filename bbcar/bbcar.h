@@ -6,12 +6,12 @@
 
 class BBCar{
 	public:
-		BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1 );
 		BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1, Ticker &servo_ticker );
 
 		parallax_servo servo0;
 		parallax_servo servo1;
 
+		void controlWheel();
 		void stop();
 		void goStraight( int speed );
 		void turn( int speed, double turn );

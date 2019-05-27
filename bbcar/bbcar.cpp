@@ -1,12 +1,14 @@
 #include "bbcar.h"
 
-BBCar::BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1 ):servo0(pin_servo0), servo1(pin_servo1){
-    servo0 = 0; servo1 = 0;
+BBCar::BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1, Ticker &servo_ticker ):servo0(pin_servo0), servo1(pin_servo1){
+    servo0.set_speed(0);
+    servo1.set_speed(0);
+    servo_ticker.attach(callback(this, &BBCar::controlWheel), 0.5);
 }
 
-BBCar::BBCar( PwmOut &pin_servo0, PwmOut &pin_servo1, Ticker &servo_ticker ):servo0(pin_servo0), servo1(pin_servo1){
-    servo_ticker.attach(callback(&servo0, &parallax_servo::servo_control), .5);
-    servo0 = 0; servo1 = 0;
+void BBCar::controlWheel(){
+    servo0.control();
+    servo1.control();
 }
 
 void BBCar::stop(){
