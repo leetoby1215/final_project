@@ -23,38 +23,29 @@ void BBCar::goStraight( int speed ){
     servo1.set_speed(-speed);
 }
 
-void BBCar::turn( int speed, double direction ){
-    static int last_speed = 0;
-    if(last_speed!=speed){
-        servo0.set_speed(speed);
-        servo1.set_speed(-speed);
-    }
-    if(direction>0){
-        servo0.set_factor(direction);
+/*	speed : speed value of servo
+    factor: control the speed value with 0~1
+            control left/right turn with +/-
+*/
+void BBCar::turn( int speed, double factor ){
+    if(factor>0){
+        servo0.set_factor(factor);
         servo1.set_factor(1);
     }
-    if(direction<0){
+    else if(factor<0){
         servo0.set_factor(1);
-        servo1.set_factor(-direction);
+        servo1.set_factor(-factor);
     }
 }
 
-float global_kp, global_ki;
-float BBCar::clamp( float value, float max, float min ){ return (max<value)?max:((min>value)?min:value); }
-int BBCar::turn2speed( float turn ){ return 25+abs(25*turn); }
-void BBCar::setController( float kp, float ki ){ global_kp = kp; global_ki = ki;}
-
-void BBCar::controller( float err ){
-    static float erri = 0;
-    const float bound = .9;
-    erri += err;
-    float correction = err*global_kp + erri*global_ki;
-    correction = clamp(correction, bound, -bound);
-    printf("correction(%.2f,%.2f) = %3.2f (kp = %.2f, ki = %.2f)\r\n", err, erri, correction, global_kp, global_ki);
-    float val = ((correction>0) ?1:(-1)) - correction;
-    turn(turn2speed(val),val);
+float BBCar::clamp( float value, float max, float min ){
+    if (value > max) return max;
+    else if (value < min) return min;
+    else return value;
 }
 
-
+int BBCar::turn2speed( float turn ){
+    return 25+abs(25*turn);
+}
 
 

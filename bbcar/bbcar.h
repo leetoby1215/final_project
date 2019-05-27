@@ -14,11 +14,11 @@ class BBCar{
 		void controlWheel();
 		void stop();
 		void goStraight( int speed );
-		void turn( int speed, double turn );
-		void controller( float err );
-		void setController( float kp, float ki );
 
-		//Range limit the output
+		// turn left/right with a factor of speed
+		void turn( int speed, double factor );
+
+		// limit the value by max and min
 		float clamp( float value, float max, float min );
 		int turn2speed( float turn );
 };

@@ -7,7 +7,5 @@
 void RPC_stop(Arguments *in, Reply *out);
 void RPC_goStraight(Arguments *in, Reply *out);
 void RPC_turn(Arguments *in, Reply *out);
-void RPC_angle(Arguments *in, Reply *out);
-void RPC_setController (Arguments *in, Reply *out);
 
 #endif

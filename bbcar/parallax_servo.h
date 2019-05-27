@@ -8,8 +8,8 @@ class parallax_servo {
     public:
         parallax_servo(PwmOut& pin);
 
-        void set_speed( int value ){ speed = value; }
-        void set_factor( double value ){ factor = value; }
+        void set_speed( int value );
+        void set_factor( double value );
         void control();
 
     private:

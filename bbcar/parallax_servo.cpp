@@ -7,6 +7,14 @@ parallax_servo::parallax_servo (PwmOut& pin) {
     speed = 0;
 }
 
+void parallax_servo::set_speed( int value ){ 
+    speed = value;
+}
+
+void parallax_servo::set_factor( double value ){
+    factor = value;
+}
+
 void parallax_servo::control(){
     double value = factor * speed;
 
