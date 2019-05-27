@@ -18,7 +18,7 @@ void BBCar::stop(){
     servo1.set_factor(1);
 }
 
-void BBCar::goStraight( int speed ){
+void BBCar::goStraight( double speed ){
     servo0.set_speed(speed);
     servo1.set_speed(-speed);
 }
@@ -27,7 +27,7 @@ void BBCar::goStraight( int speed ){
     factor: control the speed value with 0~1
             control left/right turn with +/-
 */
-void BBCar::turn( int speed, double factor ){
+void BBCar::turn( double speed, double factor ){
     servo0.set_speed(speed);
     servo1.set_speed(-speed);
     if(factor>0){
