@@ -15,8 +15,8 @@ class BBCar{
 		void stop();
 		void goStraight( double speed );
 
-		void setCalibTable( double pwm_table0[], double speed_table0[], double pwm_table1[], double speed_table1[] );
-		void goStraightCalib ( double speed );
+		void setCalibTable( int len0, double pwm_table0[], double speed_table0[], int len1, double pwm_table1[], double speed_table1[] );
+		void goStraightCalib( double speed );
 
 		// turn left/right with a factor of speed
 		void turn( double speed, double factor );

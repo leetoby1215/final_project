@@ -10,18 +10,19 @@ class parallax_servo {
 
         void set_speed( double value );
         void set_factor( double value );
-        void set_speed_by_cm( double value );
         void control();
 
-        void set_calib_table( double pwm_calib_table[], double speed_calib_table[] );
+        void set_calib_table( int len, double pwm_calib_table[], double speed_calib_table[] );
+        void set_speed_by_cm( double value );
 
-    private:
+    // private:
 
         PwmOut *pwm;
         double factor;
         double pwm_value;
 
         // the calibration table
+        int table_len = 0;
         double *pwm_table;
         double *speed_table;
 };
