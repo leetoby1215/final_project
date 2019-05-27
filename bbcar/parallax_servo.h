@@ -13,6 +13,8 @@ class parallax_servo {
         void set_speed_by_cm( double value );
         void control();
 
+        void set_calib_table( double pwm_calib_table[], double speed_calib_table[] );
+
     private:
 
         PwmOut *pwm;

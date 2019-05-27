@@ -5,14 +5,6 @@ parallax_servo::parallax_servo (PwmOut& pin) {
     pwm = &pin;
     factor = 1;
     pwm_value = 0;
-
-    // please contruct you own calibration table
-    double table1[] = {-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150};
-    double table2[] = {-10.445, -9.812, -9.647, -9.408, -5.900, 0.000, 5.900, 10.843, 11.880, 11.401, 12.199};
-    pwm_table = new double[11];
-    for (int i=0; i<11; i++) pwm_table[i] = table1[i];
-    speed_table = new double[11];
-    for (int i=0; i<11; i++) speed_table[i] = table2[i];
 }
 
 void parallax_servo::set_speed( double value ){
@@ -60,4 +52,9 @@ void parallax_servo::control(){
     else if (value < -200) value = -200;
     
     pwm->write((CENTER_BASE + value) / 20000);
+}
+
+void parallax_servo::set_calib_table( double pwm_calib_table[], double speed_calib_table[] ) {
+    pwm_table = pwm_calib_table;
+    speed_table = speed_calib_table;
 }
