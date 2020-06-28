@@ -37,8 +37,8 @@ void BBCar::goStraightCalib ( double speed ){
             control left/right turn with +/-
 */
 void BBCar::turn( double speed, double factor ){
-    servo0.set_speed(speed);
-    servo1.set_speed(-speed);
+    servo0.set_speed_by_cm(speed);
+    servo1.set_speed_by_cm(-speed);
     if(factor>0){
         servo0.set_factor(factor);
         servo1.set_factor(1);

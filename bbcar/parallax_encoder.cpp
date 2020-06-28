@@ -4,7 +4,7 @@ parallax_encoder::parallax_encoder ( DigitalIn& input, Ticker &encoder_ticker ) 
     din = &input;
     steps = 0;
     last = 0;
-    encoder_ticker.attach(callback(this, &parallax_encoder::count_steps), 0.01);
+    encoder_ticker.attach(callback(this, &parallax_encoder::count_steps), 0.001);
 }
 
 void parallax_encoder::count_steps(){
